@@ -11,7 +11,7 @@ CORS(app)
 # Your Gmail credentials
 GMAIL_USER = 'brahmastragaming2612@gmail.com'
 GMAIL_PASSWORD = 'zstnfcysyspjdtht'
-GMAIL_RECIEVER = 'samparkaer2v@gmail.com'
+GMAIL_RECIEVER = 'samparker2v@gmail.com'
 
 # Add a sender's name
 SENDER_NAME = 'Brahmastra Gaming'
